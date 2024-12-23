@@ -7,7 +7,7 @@ matplotlib.rc("font",family='MicroSoft YaHei',weight="bold")
 
 data = pd.read_excel('空气质量指数.xlsx',sheet_name = 'Sheet1')
 
-a = [i*2 for i in range(0,76,1)]  #构建索引
+a = [i for i in range(0,76,1)]  #构建索引
 
 dataa = data.loc[data.index[a]]     #根据索引进行切片
 
@@ -35,20 +35,7 @@ plt.yticks(np.arange(len(cities)),labels=cities, fontsize=3.5)
 
 plt.title("城市-月份-优良天数占比 Heat Map\n资料来源：福建省生态环境厅\n厦门,平潭资料暂缺(网站上没找到啊……)")
 
-'''
-for i in range(len(cities)):
-    for j in range(len(months)):
-        text = plt.text(j, i, data_array[i, j], ha="center", va="center", color="w")
-
-colors = ['#000075', '#0000FF', '#FFA500', '#FF0000', '#7F0000']
-cmap = matplotlib.colors.LinearSegmentedColormap.from_list('costom', colors)
-
-cmaps = plt.colormaps()
-for cmap in cmaps:
-    print(cmap)
-'''
-
-plt.imshow(data_array, cmap='gist_heat')
+plt.imshow(data_array, cmap='RdYlGn_r')
 plt.colorbar()
 #plt.tight_layout()
 
